@@ -1,7 +1,7 @@
 <?php
 namespace Netsensia\Pinnacle\Api\Client;
 
-use Netsensia\CompaniesHouse\Api\Client\Common\Guzzle\Client as GuzzleClient;
+use Netsensia\Pinnacle\Api\Client\Common\Guzzle\Client as GuzzleClient;
 
 use GuzzleHttp\Message\Response;
 
@@ -70,7 +70,7 @@ class Client
             $this->guzzleClient = new GuzzleClient();
         }
 
-        $this->guzzleClient->setApiKey( $this->apiKey );
+        $this->guzzleClient->setBasicAuth( $this->apiKey );
 
         return $this->guzzleClient;
 
@@ -104,7 +104,7 @@ class Client
     */
     public function getSports()
     {
-        return get($this->apiBaseUri . 'sports');
+        return $this->get($this->apiBaseUri . 'sports');
     }
     
     /**

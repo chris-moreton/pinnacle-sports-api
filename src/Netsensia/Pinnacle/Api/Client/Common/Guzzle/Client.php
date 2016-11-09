@@ -1,5 +1,5 @@
 <?php
-namespace Netsensia\CompaniesHouse\Api\Client\Common\Guzzle;
+namespace Netsensia\Pinnacle\Api\Client\Common\Guzzle;
 
 use GuzzleHttp\Client as GuzzleClient;
 
@@ -25,9 +25,9 @@ class Client extends GuzzleClient {
      *
      * @param $apiKey
      */
-    public function setApiKey( $apiKey ) {
+    public function setBasicAuth( $apiKey ) {
 
-        $this->setDefaultOption( 'auth', [$apiKey, ''] );
+        $this->setDefaultOption( 'headers/authorization', 'Basic ' . $apiKey);
 
     }
 

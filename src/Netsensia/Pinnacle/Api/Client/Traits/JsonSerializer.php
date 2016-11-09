@@ -1,5 +1,5 @@
 <?php
-namespace Netsensia\CompaniesHouse\Api\Client\Traits;
+namespace Netsensia\Pinnacle\Api\Client\Traits;
 
 /**
  * 

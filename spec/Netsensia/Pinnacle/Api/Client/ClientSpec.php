@@ -1,5 +1,5 @@
 <?php
-namespace spec\Netsensia\CompaniesHouse\Api\Client;
+namespace spec\Netsensia\Pinnacle\Api\Client;
 
 include "spec/SpecHelper.php";
 
@@ -9,37 +9,16 @@ class ClientSpec extends ObjectBehavior
 {
     function it_is_initializable()
     {
-        $this->shouldHaveType('Netsensia\CompaniesHouse\Api\Client\Client');
+        $this->shouldHaveType('Netsensia\Pinnacle\Api\Client\Client');
     }
     
-    /**
-     * Get the basic company information
-     * 
-     * https://developer.companieshouse.gov.uk/api/docs/company/company_number/readCompanyProfile.html
-     */
-    function it_can_get_a_company_profile()
+    function it_can_get_sports()
     {
         $this->beConstructedWith(getApiKey());
         
-        $this->getCompanyProfile('06236637')->registered_office_address->address_line_1->shouldBe('57 London Road');
+        $this->getSports()->sports[0]->name->shouldBe('Badminton');
     }
-    
-    function it_can_get_a_list_of_officers_for_a_company()
-    {
-        $this->beConstructedWith(getApiKey());
-    
-        $this->getOfficerList('06236637')->start_index->shouldBe(0);
-        $this->getOfficerList('06236637')->kind->shouldBe('officer-list');
-        $this->getOfficerList('01436733', 2, 1, 'appointed_on')->start_index->shouldBe(1);
-    }
-    
-    function it_can_do_a_company_name_search()
-    {
-        $this->beConstructedWith(getApiKey());
-        $this->companySearch('netsen')->start_index->shouldBe(0);
-        $this->companySearch('netsen')->items->shouldContainCompany('NETSENSIA LIMITED');
-    }
-    
+
     public function getMatchers()
     {
         return [
