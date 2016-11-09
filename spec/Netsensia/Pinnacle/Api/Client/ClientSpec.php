@@ -18,6 +18,13 @@ class ClientSpec extends ObjectBehavior
         
         $this->getSports()->sports[0]->name->shouldBe('Badminton');
     }
+    
+    function it_can_get_leagues()
+    {
+        $this->beConstructedWith(getApiKey());
+    
+        $this->getLeagues(33)->leagues->shouldBeArray();
+    }
 
     public function getMatchers()
     {

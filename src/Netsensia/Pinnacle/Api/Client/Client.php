@@ -84,7 +84,7 @@ class Client
      */
     private function get($url)
     {
-        $response = $this->client()->get($this->apiBaseUri . 'sports');
+        $response = $this->client()->get($url);
         
         if( $response->getStatusCode() != 200 ){
             return $this->log($response, false);
@@ -105,6 +105,17 @@ class Client
     public function getSports()
     {
         return $this->get($this->apiBaseUri . 'sports');
+    }
+    
+    /**
+     * Get Leagues
+     *
+     * @param number $sportId
+     * @return boolean|mixed
+     */
+    public function getLeagues($sportId)
+    {
+        return $this->get($this->apiBaseUri . 'leagues?sportId=' . $sportId);
     }
     
     /**

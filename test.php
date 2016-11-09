@@ -7,5 +7,5 @@ $key = trim(file_get_contents('.apiKey'));
 
 $c = new Client($key);
 
-var_dump($c->getSports());
+var_dump($c->getLeagues(33));
 
