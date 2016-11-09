@@ -11,7 +11,7 @@ class Client
     /**
      * The base URI for the API
      */
-    private $apiBaseUri = 'https://api.pinnacle.com/v2/';
+    private $apiBaseUri = 'https://api.pinnacle.com/';
     
     /**
      * 
@@ -104,18 +104,46 @@ class Client
     */
     public function getSports()
     {
-        return $this->get($this->apiBaseUri . 'sports');
+        return $this->get($this->apiBaseUri . 'v2/sports');
     }
     
     /**
      * Get Leagues
      *
      * @param number $sportId
+     * 
      * @return boolean|mixed
      */
     public function getLeagues($sportId)
     {
-        return $this->get($this->apiBaseUri . 'leagues?sportId=' . $sportId);
+        return $this->get($this->apiBaseUri . 'v2/leagues?sportId=' . $sportId);
+    }
+    
+    /**
+     * Get Fixtures
+     *
+     * @param number $sportId
+     * @param array $leagueIds
+     * 
+     * @return boolean|mixed
+     */
+    public function getFixtures($sportId, $leagueIds = null, $since = null, $liveOnly = false)
+    {
+        $url = $this->apiBaseUri . 'v1/fixtures?sportId=' . $sportId;
+        
+        if ($leagueIds) {
+            $url .= '&leagueIds=[' . implode(',', $leagueIds) . ']';
+        }
+        
+        if ($since) {
+            $url .= '&since=' . $since;
+        }
+        
+        if ($liveOnly) {
+            $url .= '&isLive=Y';
+        }
+        
+        return $this->get($url);
     }
     
     /**
