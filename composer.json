@@ -1,6 +1,6 @@
 {
     "name": "netsensia/pinnacle-sports-api",
-    "description": "API Wrapper for the Companies House API",
+    "description": "API Wrapper for the Pinnacle Sports API",
     "license": "MIT",
     "require": {
         "php": ">=5.4.0",
