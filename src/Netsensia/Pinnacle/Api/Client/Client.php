@@ -124,25 +124,56 @@ class Client
      *
      * @param number $sportId
      * @param array $leagueIds
+     * @param number $since
+     * @param booleam $isLiveOnly
      * 
      * @return boolean|mixed
      */
-    public function getFixtures($sportId, $leagueIds = null, $since = null, $liveOnly = false)
+    public function getFixtures($sportId, $leagueIds = null, $since = null, $isLiveOnly = false)
     {
         $url = $this->apiBaseUri . 'v1/fixtures?sportId=' . $sportId;
         
         if ($leagueIds) {
-            $url .= '&leagueIds=[' . implode(',', $leagueIds) . ']';
+            $url .= '&leagueIds=' . implode(',', $leagueIds);
         }
         
         if ($since) {
             $url .= '&since=' . $since;
         }
         
-        if ($liveOnly) {
+        if ($isLiveOnly) {
             $url .= '&isLive=Y';
         }
         
+        return $this->get($url);
+    }
+    
+    /**
+     * Get Odds
+     *
+     * @param number $sportId
+     * @param array $leagueIds
+     * @param number $since
+     * @param booleam $isLiveOnly
+     *
+     * @return boolean|mixed
+     */
+    public function getOdds($sportId, $leagueIds = null, $since = null, $isLiveOnly = false)
+    {
+        $url = $this->apiBaseUri . 'v1/odds?sportId=' . $sportId;
+    
+        if ($leagueIds) {
+            $url .= '&leagueIds=' . implode(',', $leagueIds);
+        }
+    
+        if ($since) {
+            $url .= '&since=' . $since;
+        }
+    
+        if ($isLiveOnly) {
+            $url .= '&isLive=Y';
+        }
+    
         return $this->get($url);
     }
     

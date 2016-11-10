@@ -32,6 +32,13 @@ class ClientSpec extends ObjectBehavior
         
         $this->getFixtures(33)->league->shouldBeArray();
     }
+    
+    function it_can_get_odds()
+    {
+        $this->beConstructedWith(getApiKey());
+    
+        $this->getOdds(33)->leagues->shouldBeArray();
+    }
 
     public function getMatchers()
     {
