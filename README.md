@@ -14,8 +14,10 @@ Usage
     $client = new Client($apiKey);
     $sports = $client->getSports();
     $leagues = $client->getLeagues(33); // 33 is the id for tennis, as obtained from getSports()
+    $fixtures = $client->getFixtures(33);
+    $odds = $client->getOdds(33);
     
-A full list of available calls can be found by examining the ClientSpec.php file which contains the spec tests.
+A full list of available calls can be found by examining the ClientSpec.php file which contains the spec tests. Additional parameters can be seen in the Client.php file.
 
 Development
 -----------
