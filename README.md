@@ -15,7 +15,7 @@ Usage
     $sports = $client->getSports();
     $leagues = $client->getLeagues(33); // 33 is the id for tennis, as obtained from getSports()
     
-A full list of available calls can be found by examining the ClientSpec.php file which contains the spec tests. The *json* directory contains examples of the data returned by the Companies House API.
+A full list of available calls can be found by examining the ClientSpec.php file which contains the spec tests.
 
 Development
 -----------
