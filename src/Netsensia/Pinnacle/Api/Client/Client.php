@@ -158,9 +158,9 @@ class Client
      *
      * @return boolean|mixed
      */
-    public function getOdds($sportId, $leagueIds = null, $since = null, $isLiveOnly = false)
+    public function getOdds($sportId, $leagueIds = null, $since = null, $isLiveOnly = false, $oddsFormat = 'american')
     {
-        $url = $this->apiBaseUri . 'v1/odds?sportId=' . $sportId;
+        $url = $this->apiBaseUri . 'v1/odds?sportId=' . $sportId . '&oddsFormat=' . $oddsFormat;
     
         if ($leagueIds) {
             $url .= '&leagueIds=' . implode(',', $leagueIds);
