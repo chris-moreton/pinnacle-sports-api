@@ -76,6 +76,11 @@ class Client
 
     }
 
+    public function setBaseUri($uri)
+    {
+        $this->apiBaseUri = $uri;
+    }
+    
     /**
      * Generic function for GET calls
      * 
